@@ -1,5 +1,6 @@
 from random import randint
 
+
 def guess_the_number():
     rand_numb = randint(1, 100)
     answer = None
@@ -16,6 +17,5 @@ def guess_the_number():
         else:
             return 'You win'
 
-    # return f'wylosowana liczba to: {rand_numb}, a wybrana {answer}'
 
 print(guess_the_number())
