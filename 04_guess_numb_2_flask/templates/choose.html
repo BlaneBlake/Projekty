@@ -2,12 +2,15 @@
 <html lang="en">
 
     <body>
-        <form action="" >
-            <label for="answer">I guess: {{guess}}</label>
-            <p></p>
-            <input class="button" type="submit" id="answer" name="answer" value="You win">
+        <h1>I guess: {{guess}}</h1>
+        <form action="" method="POST">
+            <input class="button" type="submit" id="answer" name="answer" value="You won">
             <input class="button" type="submit" id="answer" name="answer" value="Too small">
             <input class="button" type="submit" id="answer" name="answer" value="Too big">
+
+            <input type="hidden" name="min" value="{min}">
+            <input type="hidden" name="max" value="{max}">
+            <input type="hidden" name="guess" value="{guess}">
 
         </form>
     </body>
