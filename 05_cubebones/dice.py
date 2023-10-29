@@ -7,15 +7,32 @@ def dice(): # xDy+z
              'D10' : randint(1, 10), 'D12' : randint(1, 12),
              'D20' : randint(1, 20), 'D100' : randint(1, 100)}
     throw = list(throw)
-    numbers_of_dices = throw[0:throw.index("D")]
+
+    if throw[0] == "D" or throw[1] == "D":
+        print('Poprawna komenda')
+    else:
+        print("podałeś złą komendę")
+
+    if throw[0] == "D":
+        numbers_of_dices = 1
+    else:
+        numbers_of_dices = throw[0:throw.index("D")]
+
     try:
         dices_type = ''.join(throw[throw.index("D"):throw.index("+")])
     except ValueError:
-        dices_type = ''.join(throw[throw.index("D"):throw.index("-")])
-    except ValueError:
-        dices_type = ''.join(throw[throw.index("D"):])
+        try:
+            dices_type = ''.join(throw[throw.index("D"):throw.index("-")])
+        except ValueError:
+            dices_type = ''.join(throw[throw.index("D"): ])
+
+    if throw.index("+") not in throw or throw.index("-") not in throw:
+        modifier = 0
+
+
     print(numbers_of_dices)
     print(dices_type)
+    print(modifier)
 
     result = ''
     return result
