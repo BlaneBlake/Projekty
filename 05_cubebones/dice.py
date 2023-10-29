@@ -12,6 +12,7 @@ def dice(): # xDy+z
         print('Poprawna komenda')
     else:
         print("podałeś złą komendę")
+    print(throw)
 
     if throw[0] == "D":
         numbers_of_dices = 1
@@ -19,7 +20,7 @@ def dice(): # xDy+z
     else:
         numbers_of_dices = throw[0:throw.index("D")]
         del throw[0:throw.index("D")]
-
+    print(throw)
     try:
         dices_type = ''.join(throw[throw.index("D"):throw.index("+")])
         del throw[throw.index("D"):throw.index("+")]
@@ -30,11 +31,19 @@ def dice(): # xDy+z
         except ValueError:
             dices_type = ''.join(throw[throw.index("D"): ])
             del throw[throw.index("D"): ]
-
+    print(throw)
     #if throw.index("+") not in throw or throw.index("-") not in throw:
     modifier = ''.join(throw)
 
+    if modifier == []:
+        modifier = 0
+    elif modifier[0] == "+":
+        modifier = int(''.join(modifier[1:]))
+    elif modifier[0] == "-":
+        modifier = int(''.join(modifier))
 
+
+    print()
     print(numbers_of_dices)
     print(dices_type)
     print(modifier)
