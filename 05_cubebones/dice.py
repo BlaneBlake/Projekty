@@ -15,19 +15,24 @@ def dice(): # xDy+z
 
     if throw[0] == "D":
         numbers_of_dices = 1
+        del throw[0]
     else:
         numbers_of_dices = throw[0:throw.index("D")]
+        del throw[0:throw.index("D")]
 
     try:
         dices_type = ''.join(throw[throw.index("D"):throw.index("+")])
+        del throw[throw.index("D"):throw.index("+")]
     except ValueError:
         try:
             dices_type = ''.join(throw[throw.index("D"):throw.index("-")])
+            del throw[throw.index("D"):throw.index("-")]
         except ValueError:
             dices_type = ''.join(throw[throw.index("D"): ])
+            del throw[throw.index("D"): ]
 
-    if throw.index("+") not in throw or throw.index("-") not in throw:
-        modifier = 0
+    #if throw.index("+") not in throw or throw.index("-") not in throw:
+    modifier = ''.join(throw)
 
 
     print(numbers_of_dices)
