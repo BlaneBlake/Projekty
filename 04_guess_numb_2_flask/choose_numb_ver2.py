@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/guess", methods=['GET', 'POST'])
 def form():
-
+    # do wykonania na pętli while
     min = 0
     max = 1000
     answer = "None"
