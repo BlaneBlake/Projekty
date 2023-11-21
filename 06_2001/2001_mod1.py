@@ -1,16 +1,19 @@
 from random import randint, choice
 
-def dices_throw(first_dice = 'random', second_dice = 'random'):
-    dices = {'D3': randint(1, 3), 'D4': randint(1, 4),
-             'D6': randint(1, 6), 'D8': randint(1, 8),
-             'D10': randint(1, 10), 'D12': randint(1, 12),
-             'D20': randint(1, 20), 'D100': randint(1, 100)}
-    if first_dice in dices and second_dice in dices:
-        return dices[first_dice] + dices[second_dice]
-    elif first_dice == 'random' or second_dice == 'random':
-        dices_list = ['D3', 'D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100']
-        return dices[choice(dices_list)] + dices[choice(dices_list)]
+
+def dices_throw(first_dice = '', second_dice = ''):
+    dices = ['D3', 'D4',
+             'D6', 'D8',
+             'D10', 'D12',
+             'D20', 'D100']
+
+
+    if first_dice == '' or second_dice == '':
+        return  randint(1, int(choice(dices).split('D')[1])) + randint(1, int(choice(dices).split('D')[1]))
+    elif first_dice in dices and second_dice in dices:
+        return randint(1, int(first_dice.split('D')[1])) + randint(1, int(second_dice.split('D')[1]))
     else:
+        # If command is wrong else is not stable !!!
         print('Wrong dices. Try again')
         first_dice = input('Choose first dice ("D3, D4, D6, D8, D10, D12, D20, D100")\n')
         second_dice = input('Choose second dice ("D3, D4, D6, D8, D10, D12, D20, D100")\n')
@@ -30,7 +33,7 @@ second_dice = input('Choose second dice ("D3, D4, D6, D8, D10, D12, D20, D100")\
 
 human_player = dices_throw(first_dice, second_dice)
 print('You have', human_player, ' points.')
-computer_player = dices_throw(first_dice, second_dice)
+computer_player = dices_throw()
 print('Computer have', computer_player, 'points.')
 
 while human_player < 2001 and computer_player < 2001:
@@ -39,7 +42,7 @@ while human_player < 2001 and computer_player < 2001:
 
     human_player = sum_points(human_player, dices_throw(first_dice, second_dice))
     print('You have', human_player, ' points.')
-    computer_player = sum_points(computer_player, dices_throw(first_dice, second_dice))
+    computer_player = sum_points(computer_player, dices_throw())
     print('Computer have', computer_player, 'points.')
 
     if human_player >= 2001:
