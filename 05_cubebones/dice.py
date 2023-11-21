@@ -2,10 +2,14 @@ from random import randint
 
 def dice(): # xDy+z
     throw = input('wzór na rzut: xDy+z\npowiedz jaki rzut wykonać:\n')
-    dices = {'D3' : randint(1, 3), 'D4' : randint(1, 4),
-             'D6' : randint(1, 6), 'D8' : randint(1, 8),
-             'D10' : randint(1, 10), 'D12' : randint(1, 12),
-             'D20' : randint(1, 20), 'D100' : randint(1, 100)}
+    # dices = {'D3' : randint(1, 3), 'D4' : randint(1, 4),
+    #          'D6' : randint(1, 6), 'D8' : randint(1, 8),
+    #          'D10' : randint(1, 10), 'D12' : randint(1, 12),
+    #          'D20' : randint(1, 20), 'D100' : randint(1, 100)}
+    dices = ['D3', 'D4',
+             'D6', 'D8',
+             'D10', 'D12',
+             'D20', 'D100']
 
 
     # MORE COMPLICATED COMMAND TEST
@@ -51,9 +55,16 @@ def dice(): # xDy+z
         print()
 
         result = 0
+        #!!!!! nie losuje liczby oczek
+        #losuje raz zmienną w słowniku i przypisuje ją do zmiennej
+        # for i in range(int(numbers_of_dices)):
+        #     print(dices[f'{dices_type}'])
+        #     result += dices[dices_type]
+        #     # print(result)
+        # result += modifier
         for i in range(int(numbers_of_dices)):
-            print(dices[str(dices_type)])
-            result += dices[str(dices_type)]
+            t = int(dices_type.split('D')[1])
+            result += randint(1, t)
         result += modifier
     else:
         result = 'Błędna komenda'
